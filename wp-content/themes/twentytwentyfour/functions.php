@@ -227,3 +227,13 @@ function custom_trigger_for_blog_posts($post_id)
 }
 
 add_action('publish_post', 'custom_trigger_for_blog_posts');
+
+
+//Custom avatar for users
+
+
+function myavatar_add_default_avatar($url)
+{
+	return 'https://task.manojkumarshah.com/wp-content/uploads/2023/11/8ud6p1.jpg';
+}
+add_filter('bp_core_mysteryman_src', 'myavatar_add_default_avatar');
