@@ -243,7 +243,7 @@ function custom_buddypress_profile_picture($user_id)
 	// If the user has not set their profile picture, display a default picture
 	if (empty($avatar)) {
 		// Replace the URL with the path to your default picture
-		$default_picture_url = 'https://task.manojkumarshah.com/wp-content/uploads/2023/11/8ud6p1.jpg';
+		$default_picture_url = site_url() . '/wp-content/uploads/2023/11/8ud6p1.jpg';
 		$avatar = '<img src="' . esc_url($default_picture_url) . '" alt="Default Picture" />';
 	}
 
