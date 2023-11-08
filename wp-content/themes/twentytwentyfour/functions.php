@@ -227,25 +227,3 @@ function custom_trigger_for_blog_posts($post_id)
 }
 
 add_action('publish_post', 'custom_trigger_for_blog_posts');
-
-// Custom function to set default image for BuddyPress plugin
-
-function custom_buddypress_profile_picture($user_id)
-{
-	// Check if the user has a custom profile picture
-	$avatar = bp_core_fetch_avatar(
-		array(
-			'item_id' => $user_id,
-			'html' => false,
-		)
-	);
-
-	// If the user has not set their profile picture, display a default picture
-	if (empty($avatar)) {
-		// Replace the URL with the path to your default picture
-		$default_picture_url = site_url() . '/wp-content/uploads/2023/11/8ud6p1.jpg';
-		$avatar = '<img src="' . esc_url($default_picture_url) . '" alt="Default Picture" />';
-	}
-
-	return $avatar;
-}
