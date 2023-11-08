@@ -204,3 +204,26 @@ if ( ! function_exists( 'twentytwentyfour_pattern_categories' ) ) :
 endif;
 
 add_action( 'init', 'twentytwentyfour_pattern_categories' );
+
+
+// Custom Trigger for Blog Posts for GamiPress Plugin
+
+function custom_trigger_for_blog_posts($post_id)
+{
+	// Check if this is a blog post
+	if (get_post_type($post_id) == 'post') {
+		// Get the author's ID
+		$author_id = get_post_field('post_author', $post_id);
+
+		// Get the user's published blog post count
+		$published_posts_count = count_user_posts($author_id, 'post');
+
+		// Check if the user published 2nd, 4th, 6th, 8th, etc. post
+		if ($published_posts_count % 2 == 0) {
+			// Award achievement here
+			gamipress_award_points($author_id, 'your_achievement_id'); // Replace 'your_achievement_id' with the actual achievement ID
+		}
+	}
+}
+
+add_action('publish_post', 'custom_trigger_for_blog_posts');
