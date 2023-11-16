@@ -234,14 +234,6 @@ add_action('publish_post', 'custom_trigger_for_blog_posts');
 
 function myavatar_add_default_avatar($url)
 {
-	if (is_user_logged_in()) {
-		$user = wp_get_current_user();
-
-		if (in_array('editor', $user->roles)) {
-			return 'https://task.manojkumarshah.com/wp-content/uploads/2023/11/8ud6p1.jpg';
-		}
-	}
-
-	return $url;
+	return 'https://task.manojkumarshah.com/wp-content/uploads/2023/11/8ud6p1.jpg';
 }
 add_filter('bp_core_mysteryman_src', 'myavatar_add_default_avatar');
