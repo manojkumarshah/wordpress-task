@@ -221,7 +221,7 @@ function custom_trigger_for_blog_posts($post_id)
 		// Check if the user published 2nd, 4th, 6th, 8th, etc. post
 		if ($published_posts_count % 2 == 0) {
 			// Award achievement here
-			gamipress_award_points($author_id, 'your_achievement_id'); // Replace 'your_achievement_id' with the actual achievement ID
+			gamipress_award_points($author_id, 'points-on-new-post'); // Replace 'your_achievement_id' with the actual achievement ID
 		}
 	}
 }
@@ -234,6 +234,9 @@ add_action('publish_post', 'custom_trigger_for_blog_posts');
 
 function myavatar_add_default_avatar($url)
 {
+	$user_roles = wp_get_current_user()->roles;
+	if(in_array('editor', $user_roles)){
 	return 'https://task.manojkumarshah.com/wp-content/uploads/2023/11/8ud6p1.jpg';
+}
 }
 add_filter('bp_core_mysteryman_src', 'myavatar_add_default_avatar');
